@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trophy Bat Order | Berg Bat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #0a0a0a;
+      color: #cccccc;
+      font-family: 'Assistant', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* === HEADER === */
+    .header {
+      background-color: #000;
+      padding: 20px 0;
+      text-align: center;
+      border-bottom: 3px solid #C5203E;
+    }
+    .header-logo {
+      width: 160px;
+      height: 70px;
+      margin: 0 auto;
+      border: 2px dashed #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* === HERO === */
+    .hero {
+      background-color: #121212;
+      padding: 50px 20px 40px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .hero-divider {
+      width: 60px;
+      height: 3px;
+      background-color: #C5203E;
+      margin: 0 auto 18px;
+    }
+    .hero p {
+      font-size: 16px;
+      color: #999;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* === FORM CONTAINER === */
+    .form-container {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+      background-color: #0a0a0a;
+    }
+
+    /* === FORM === */
+    .order-form {
+      background-color: #121212;
+      border-radius: 6px;
+      padding: 36px 32px 40px;
+      border: 1px solid #1e1e1e;
+    }
+
+    .form-section-title {
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #C5203E;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #222;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 0;
+    }
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .form-group label .required {
+      color: #C5203E;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background-color: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 4px;
+      padding: 12px 14px;
+      font-family: 'Assistant', Arial, sans-serif;
+      font-size: 15px;
+      color: #FFFFFF;
+      transition: border-color 0.2s ease;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #C5203E;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #555;
+    }
+    .form-group select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    .form-group select option {
+      background-color: #1a1a1a;
+      color: #FFFFFF;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* === BAT SIZE CARDS WITH QTY === */
+    .bat-sizes {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .bat-size-card {
+      flex: 1;
+      background-color: #1a1a1a;
+      border: 2px solid #2a2a2a;
+      border-radius: 4px;
+      padding: 18px 12px 14px;
+      text-align: center;
+      transition: border-color 0.2s ease;
+    }
+    .bat-size-card:focus-within {
+      border-color: #C5203E;
+    }
+    .bat-size-name {
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .bat-size-length {
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .bat-size-price {
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #C5203E;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .bat-size-card .qty-label {
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .bat-size-card input[type="number"] {
+      width: 70px;
+      background-color: #0f0f0f;
+      border: 1px solid #333;
+      border-radius: 4px;
+      padding: 8px 4px;
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #FFFFFF;
+      text-align: center;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .bat-size-card input[type="number"]:focus {
+      border-color: #C5203E;
+    }
+    /* Hide spinner arrows */
+    .bat-size-card input[type="number"]::-webkit-outer-spin-button,
+    .bat-size-card input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .bat-size-card input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    .form-divider {
+      height: 1px;
+      background-color: #222;
+      margin: 28px 0;
+    }
+
+    /* === ENGRAVING ROSTER === */
+    .engraving-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+    .engraving-row input {
+      background-color: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 4px;
+      padding: 10px 12px;
+      font-family: 'Assistant', Arial, sans-serif;
+      font-size: 15px;
+      color: #FFFFFF;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .engraving-row input:focus {
+      border-color: #C5203E;
+    }
+    .engraving-row input::placeholder {
+      color: #555;
+    }
+    .engraving-name {
+      flex: 2;
+    }
+    .engraving-number {
+      width: 80px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+    .remove-row-btn {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      background-color: transparent;
+      border: 1px solid #333;
+      border-radius: 4px;
+      color: #666;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      padding: 0;
+      line-height: 1;
+    }
+    .remove-row-btn:hover {
+      border-color: #C5203E;
+      color: #C5203E;
+    }
+    .add-row-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: transparent;
+      border: 1px dashed #333;
+      border-radius: 4px;
+      color: #999;
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 10px 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: 4px;
+    }
+    .add-row-btn:hover {
+      border-color: #C5203E;
+      color: #C5203E;
+    }
+    .engraving-header {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 8px;
+      padding-right: 44px; /* account for remove button */
+    }
+    .engraving-header span {
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .engraving-header .col-name { flex: 2; }
+    .engraving-header .col-number { width: 80px; flex-shrink: 0; text-align: center; }
+
+    .engraving-note {
+      font-size: 13px;
+      color: #555;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    /* === UPLOAD AREA === */
+    .upload-area {
+      border: 2px dashed #2a2a2a;
+      border-radius: 4px;
+      padding: 28px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background-color: #1a1a1a;
+    }
+    .upload-area:hover, .upload-area.dragover {
+      border-color: #C5203E;
+      background-color: rgba(197, 32, 62, 0.05);
+    }
+    .upload-area.has-file {
+      border-color: #4a4a4a;
+    }
+    .upload-icon {
+      font-size: 28px;
+      color: #555;
+      margin-bottom: 6px;
+    }
+    .upload-text {
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .upload-hint {
+      font-size: 12px;
+      color: #555;
+    }
+
+    /* === SUBMIT === */
+    .submit-btn {
+      display: block;
+      width: 100%;
+      background-color: #C5203E;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 4px;
+      padding: 16px 24px;
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .submit-btn:hover {
+      background-color: #a81a33;
+    }
+
+    .form-note {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 13px;
+      color: #666;
+      line-height: 1.5;
+    }
+    .form-note a {
+      color: #C5203E;
+      text-decoration: none;
+    }
+
+    /* === FOOTER === */
+    .footer {
+      background-color: #000;
+      padding: 30px 20px;
+      text-align: center;
+      border-top: 1px solid #1a1a1a;
+    }
+    .footer p {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 4px;
+    }
+    .footer .tagline {
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 12px;
+      color: #C5203E;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .footer a {
+      color: #777;
+      text-decoration: none;
+    }
+
+    /* === THANK YOU STATE === */
+    .thank-you {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .thank-you h2 {
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .thank-you p {
+      font-size: 16px;
+      color: #999;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .thank-you .check-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: #C5203E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 32px;
+      color: #FFFFFF;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 28px; }
+      .form-row { flex-direction: column; gap: 0; }
+      .bat-sizes { flex-direction: column; }
+      .order-form { padding: 28px 20px 32px; }
+      .engraving-header { padding-right: 0; display: none; }
+      .engraving-row input.engraving-name { flex: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <!-- REPLACE WITH YOUR BERG BAT LOGO -->
+    <div class="header-logo">[ Berg Bat Logo ]</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Trophy Bat Order</h1>
+    <div class="hero-divider"></div>
+    <p>Tell us about your program and we'll get back to you within 24 hours with a custom quote.</p>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-container">
+    <!--
+      =============================================
+      TO MAKE THIS FORM WORK:
+
+      Option 1 — Formspree (easiest, free):
+        1. Go to https://formspree.io and sign up
+        2. Create a new form
+        3. Replace the action URL below with your Formspree endpoint
+           e.g. action="https://formspree.io/f/xYOURID"
+        4. Done — submissions go to trevor@bergbat.com
+
+      Option 2 — Netlify Forms:
+        1. Add netlify attribute to form tag
+        2. Deploy on Netlify
+
+      Option 3 — Custom backend:
+        Point action to your own server endpoint
+      =============================================
+    -->
+    <form class="order-form" id="trophyForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+      <!-- CONTACT INFO -->
+      <div class="form-section-title">Your Info</div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name <span class="required">*</span></label>
+          <input type="text" name="first_name" placeholder="First name" required>
+        </div>
+        <div class="form-group">
+          <label>Last Name <span class="required">*</span></label>
+          <input type="text" name="last_name" placeholder="Last name" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>School / Organization <span class="required">*</span></label>
+        <input type="text" name="school" placeholder="e.g. Air Academy High School" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email <span class="required">*</span></label>
+          <input type="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" name="phone" placeholder="(719) 555-0100">
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <!-- BAT DETAILS -->
+      <div class="form-section-title">Bat Details</div>
+
+      <div class="form-group" style="margin-bottom:8px;">
+        <label>Qty Per Size <span class="required">*</span></label>
+      </div>
+      <div class="bat-sizes">
+        <div class="bat-size-card">
+          <span class="bat-size-name">Full Size</span>
+          <span class="bat-size-length">33"</span>
+          <span class="bat-size-price">$120</span>
+          <span class="qty-label">Qty</span>
+          <input type="number" name="qty_full_size_33" min="0" value="0">
+        </div>
+        <div class="bat-size-card">
+          <span class="bat-size-name">Short</span>
+          <span class="bat-size-length">26"</span>
+          <span class="bat-size-price">$85</span>
+          <span class="qty-label">Qty</span>
+          <input type="number" name="qty_short_26" min="0" value="0">
+        </div>
+        <div class="bat-size-card">
+          <span class="bat-size-name">Mini</span>
+          <span class="bat-size-length">18"</span>
+          <span class="bat-size-price">$55</span>
+          <span class="qty-label">Qty</span>
+          <input type="number" name="qty_mini_18" min="0" value="0">
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <!-- CUSTOMIZE -->
+      <div class="form-section-title">Customize</div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Handle Color</label>
+          <select name="handle_color">
+            <option value="" disabled selected>Select color</option>
+            <option value="Natural">Natural</option>
+            <option value="Traditional Flame">Traditional Flame</option>
+            <option value="Stripe Flame">Stripe Flame</option>
+            <option value="White">White</option>
+            <option value="Slate">Slate</option>
+            <option value="Black">Black</option>
+            <option value="Coffee">Coffee</option>
+            <option value="Mocha">Mocha</option>
+            <option value="Cinnamon">Cinnamon</option>
+            <option value="Cherry">Cherry</option>
+            <option value="Maroon">Maroon</option>
+            <option value="Red">Red</option>
+            <option value="Orange">Orange</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Volt">Volt</option>
+            <option value="Teal">Teal</option>
+            <option value="Green">Green</option>
+            <option value="Dark Olive">Dark Olive</option>
+            <option value="Forest Green">Forest Green</option>
+            <option value="Navy Blue">Navy Blue</option>
+            <option value="Blue">Blue</option>
+            <option value="Carolina Blue">Carolina Blue</option>
+            <option value="Purple">Purple</option>
+            <option value="Bordeaux Pink">Bordeaux Pink</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Barrel Color</label>
+          <select name="barrel_color">
+            <option value="" disabled selected>Select color</option>
+            <option value="Natural">Natural</option>
+            <option value="Traditional Flame">Traditional Flame</option>
+            <option value="Stripe Flame">Stripe Flame</option>
+            <option value="White">White</option>
+            <option value="Slate">Slate</option>
+            <option value="Black">Black</option>
+            <option value="Coffee">Coffee</option>
+            <option value="Mocha">Mocha</option>
+            <option value="Cinnamon">Cinnamon</option>
+            <option value="Cherry">Cherry</option>
+            <option value="Maroon">Maroon</option>
+            <option value="Red">Red</option>
+            <option value="Orange">Orange</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Volt">Volt</option>
+            <option value="Teal">Teal</option>
+            <option value="Green">Green</option>
+            <option value="Dark Olive">Dark Olive</option>
+            <option value="Forest Green">Forest Green</option>
+            <option value="Navy Blue">Navy Blue</option>
+            <option value="Blue">Blue</option>
+            <option value="Carolina Blue">Carolina Blue</option>
+            <option value="Purple">Purple</option>
+            <option value="Bordeaux Pink">Bordeaux Pink</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Trademark Color</label>
+          <select name="trademark_color">
+            <option value="" disabled selected>Select color</option>
+            <option value="USA Flag">USA Flag</option>
+            <option value="Colorado Flag">Colorado Flag</option>
+            <option value="Camo">Camo</option>
+            <option value="Black">Black</option>
+            <option value="White">White</option>
+            <option value="Metallic Gold">Metallic Gold</option>
+            <option value="Metallic Silver">Metallic Silver</option>
+            <option value="Maroon">Maroon</option>
+            <option value="Red">Red</option>
+            <option value="Orange">Orange</option>
+            <option value="Yellow Gold">Yellow Gold</option>
+            <option value="Green">Green</option>
+            <option value="Forest Green">Forest Green</option>
+            <option value="Teal">Teal</option>
+            <option value="Carolina Blue">Carolina Blue</option>
+            <option value="Blue">Blue</option>
+            <option value="Navy Blue">Navy Blue</option>
+            <option value="Purple">Purple</option>
+            <option value="Pink">Pink</option>
+            <option value="Gray">Gray</option>
+            <option value="Black Carbon Fiber">Black Carbon Fiber</option>
+            <option value="White Carbon Fiber">White Carbon Fiber</option>
+            <option value="Blue Carbon Fiber">Blue Carbon Fiber</option>
+            <option value="Red Carbon Fiber">Red Carbon Fiber</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Stripe Color</label>
+          <select name="stripe_color">
+            <option value="" disabled selected>Select color</option>
+            <option value="No Stripe">No Stripe (One Color Bat)</option>
+            <option value="Black">Black</option>
+            <option value="White">White</option>
+            <option value="Metallic Gold">Metallic Gold</option>
+            <option value="Metallic Silver">Metallic Silver</option>
+            <option value="Maroon">Maroon</option>
+            <option value="Red">Red</option>
+            <option value="Orange">Orange</option>
+            <option value="Yellow Gold">Yellow Gold</option>
+            <option value="Green">Green</option>
+            <option value="Forest Green">Forest Green</option>
+            <option value="Teal">Teal</option>
+            <option value="Carolina Blue">Carolina Blue</option>
+            <option value="Blue">Blue</option>
+            <option value="Navy Blue">Navy Blue</option>
+            <option value="Purple">Purple</option>
+            <option value="Pink">Pink</option>
+            <option value="Gray">Gray</option>
+            <option value="Black Carbon Fiber">Black Carbon Fiber</option>
+            <option value="White Carbon Fiber">White Carbon Fiber</option>
+            <option value="Blue Carbon Fiber">Blue Carbon Fiber</option>
+            <option value="Red Carbon Fiber">Red Carbon Fiber</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <!-- ENGRAVING / ROSTER -->
+      <div class="form-section-title">Engraving — Player Roster</div>
+
+      <div class="engraving-header">
+        <span class="col-name">Player Name</span>
+        <span class="col-number">#</span>
+      </div>
+
+      <div id="engravingList">
+        <div class="engraving-row">
+          <input type="text" class="engraving-name" name="player_1_name" placeholder="Player name">
+          <input type="text" class="engraving-number" name="player_1_number" placeholder="#">
+          <button type="button" class="remove-row-btn" onclick="removeRow(this)" title="Remove">&times;</button>
+        </div>
+      </div>
+
+      <button type="button" class="add-row-btn" onclick="addRow()">+ Add Player</button>
+
+      <p class="engraving-note">Add each player who needs a personalized bat. We'll engrave the name and number on each one.</p>
+
+      <div class="form-divider"></div>
+
+      <!-- LOGO UPLOAD -->
+      <div class="form-section-title">School / Team Logo</div>
+
+      <div class="form-group">
+        <label>Upload Your Logo</label>
+        <div class="upload-area" id="uploadArea" onclick="document.getElementById('logoFile').click()">
+          <input type="file" name="logo" id="logoFile" accept="image/*,.pdf,.ai,.eps,.svg" style="display:none;" onchange="handleFileSelect(this)">
+          <div class="upload-icon">&#8679;</div>
+          <p class="upload-text" id="uploadText">Click to upload or drag & drop</p>
+          <p class="upload-hint">PNG, JPG, SVG, PDF, AI, or EPS</p>
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <!-- ADDITIONAL -->
+      <div class="form-section-title">Additional Details</div>
+
+      <div class="form-group">
+        <label>What else do you want on the bat?</label>
+        <textarea name="customization" placeholder="School logo, season stats, dates, team motto — whatever you want, we can do it."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Anything else we should know?</label>
+        <textarea name="notes" placeholder="Timeline, special requests, questions — we're all ears." style="min-height:70px;"></textarea>
+      </div>
+
+      <!-- HIDDEN FIELDS -->
+      <input type="hidden" name="_subject" value="New Trophy Bat Order Request">
+      <input type="hidden" name="_next" value="https://order.bergbat.com/thanks">
+
+      <!-- SUBMIT -->
+      <button type="submit" class="submit-btn">Submit Order Request</button>
+
+      <p class="form-note">
+        We'll get back to you within 24 hours.<br>
+        Need it faster? Text <strong style="color:#fff;">719-203-9100</strong>
+      </p>
+    </form>
+
+    <!-- THANK YOU (shown after submit with Formspree redirect or JS) -->
+    <div class="thank-you" id="thankYou">
+      <div class="check-icon">&#10003;</div>
+      <h2>Order Request Sent</h2>
+      <p>We'll be in touch within 24 hours. If you need anything sooner, text us at <strong style="color:#fff;">719-203-9100</strong>.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p class="tagline">Be Offensive</p>
+    <p>Berg Bat Company &bull; Colorado Springs, CO</p>
+    <p><a href="https://bergbat.com">BergBat.com</a> &bull; <a href="mailto:trevor@bergbat.com">trevor@bergbat.com</a> &bull; 719-203-9100</p>
+  </div>
+
+  <script>
+    let playerCount = 1;
+
+    function addRow() {
+      playerCount++;
+      const list = document.getElementById('engravingList');
+      const row = document.createElement('div');
+      row.className = 'engraving-row';
+      row.innerHTML = `
+        <input type="text" class="engraving-name" name="player_${playerCount}_name" placeholder="Player name">
+        <input type="text" class="engraving-number" name="player_${playerCount}_number" placeholder="#">
+        <button type="button" class="remove-row-btn" onclick="removeRow(this)" title="Remove">&times;</button>
+      `;
+      list.appendChild(row);
+    }
+
+    function removeRow(btn) {
+      const list = document.getElementById('engravingList');
+      if (list.children.length > 1) {
+        btn.parentElement.remove();
+      }
+    }
+
+    // Logo upload handling
+    function handleFileSelect(input) {
+      const area = document.getElementById('uploadArea');
+      const text = document.getElementById('uploadText');
+      if (input.files && input.files[0]) {
+        text.textContent = input.files[0].name;
+        area.classList.add('has-file');
+      }
+    }
+
+    const uploadArea = document.getElementById('uploadArea');
+    uploadArea.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      this.classList.add('dragover');
+    });
+    uploadArea.addEventListener('dragleave', function() {
+      this.classList.remove('dragover');
+    });
+    uploadArea.addEventListener('drop', function(e) {
+      e.preventDefault();
+      this.classList.remove('dragover');
+      const fileInput = document.getElementById('logoFile');
+      fileInput.files = e.dataTransfer.files;
+      handleFileSelect(fileInput);
+    });
+
+    // Form validation: at least one bat size must have qty > 0
+    const form = document.getElementById('trophyForm');
+    form.addEventListener('submit', function(e) {
+      const full = parseInt(document.querySelector('[name="qty_full_size_33"]').value) || 0;
+      const short = parseInt(document.querySelector('[name="qty_short_26"]').value) || 0;
+      const mini = parseInt(document.querySelector('[name="qty_mini_18"]').value) || 0;
+
+      if (full + short + mini === 0) {
+        e.preventDefault();
+        alert('Please enter a quantity for at least one bat size.');
+        return;
+      }
+    });
+  </script>
+</body>
+</html>
