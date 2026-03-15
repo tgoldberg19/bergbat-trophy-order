@@ -528,7 +528,7 @@
         Point action to your own server endpoint
       =============================================
     -->
-    <form class="order-form" id="trophyForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <form class="order-form" id="trophyForm" action="https://formsubmit.co/trevor@bergbat.com" method="POST">
 
       <!-- CONTACT INFO -->
       <div class="form-section-title">Your Info</div>
@@ -775,7 +775,9 @@
 
       <!-- HIDDEN FIELDS -->
       <input type="hidden" name="_subject" value="New Trophy Bat Order Request">
-      <input type="hidden" name="_next" value="https://order.bergbat.com/thanks">
+      <input type="hidden" name="_next" value="https://bergbat-trophy-order.vercel.app/thanks">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
 
       <!-- SUBMIT -->
       <button type="submit" class="submit-btn">Submit Order Request</button>
